@@ -1,3 +1,9 @@
+/*
+ * Jason Cameron
+ * Ms. Krasteva
+ * 2024-02-18
+ * This class is a blueprint for a sentient drone object. It has attributes for manufacturer, model, serial number, production year, drone ID, battery level, current altitude, current location, operational status, and mission status.
+ */
 public class SentientDrone {
     // Immutable attributes
     private final String manufacturer;
@@ -13,7 +19,6 @@ public class SentientDrone {
     private String operationalStatus;
     private String missionStatus;
 
-    // Default constructor
     public SentientDrone() {
         this.manufacturer = "DefaultManufacturer";
         this.model = "DefaultModel";
@@ -27,7 +32,6 @@ public class SentientDrone {
         this.missionStatus = "None";
     }
 
-    // Parameterized constructor
     public SentientDrone(String manufacturer, String model, String serialNumber, int productionYear, String droneID,
                          int batteryLevel, double currentAltitude, String currentLocation, String missionStatus) {
         this.manufacturer = manufacturer;
@@ -42,7 +46,6 @@ public class SentientDrone {
         this.missionStatus = missionStatus;
     }
 
-    // Setters for mutable attributes
     public void setBatteryLevel(int batteryLevel) {
         if (batteryLevel >= 0 && batteryLevel <= 100)
             this.batteryLevel = batteryLevel;
@@ -65,7 +68,6 @@ public class SentientDrone {
         this.missionStatus = status;
     }
 
-    // Getters for immutable attributes
     public String getManufacturer() {
         return manufacturer;
     }
@@ -86,7 +88,6 @@ public class SentientDrone {
         return droneID;
     }
 
-    // Behaviours - changes of behaviour
     public void launch() {
         setOperationalStatus("Active");
         System.out.println("Drone launched.");
@@ -112,5 +113,18 @@ public class SentientDrone {
 
     public void performScan() {
         System.out.println("Scanning at location: " + currentLocation);
+    }
+
+    public void displayInfo() {
+        System.out.println("Manufacturer: " + manufacturer);
+        System.out.println("Model: " + model);
+        System.out.println("Serial Number: " + serialNumber);
+        System.out.println("Production Year: " + productionYear);
+        System.out.println("Drone ID: " + droneID);
+        System.out.println("Battery Level: " + batteryLevel);
+        System.out.println("Current Altitude: " + currentAltitude);
+        System.out.println("Current Location: " + currentLocation);
+        System.out.println("Operational Status: " + operationalStatus);
+        System.out.println("Mission Status: " + missionStatus);
     }
 }

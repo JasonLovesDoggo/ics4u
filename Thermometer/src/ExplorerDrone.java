@@ -1,3 +1,9 @@
+/*
+ * Jason Cameron
+ * Ms. Krasteva
+ * 2024-02-18
+ * This class is a blueprint for an explorer drone object. It extends the SentientDrone class and has additional attributes for exploration range, sensor package, onboard "AI" version, base station, and color scheme.
+ */
 public class ExplorerDrone extends SentientDrone {
     // Immutable attributes
     private final double explorationRange;
@@ -13,7 +19,6 @@ public class ExplorerDrone extends SentientDrone {
     private String communicationStatus;
     private String currentTask;
 
-    // Default constructor
     public ExplorerDrone() {
         super();
         this.explorationRange = 100.0;
@@ -28,7 +33,6 @@ public class ExplorerDrone extends SentientDrone {
         this.currentTask = "Idle";
     }
 
-    // Parameterized constructor
     public ExplorerDrone(String manufacturer, String model, String serialNumber, int productionYear, String droneID,
                          double explorationRange, String sensorPackage, String onboardAIversion, String baseStation,
                          String colorScheme, String currentScanResult, String mapData, double speed,
@@ -46,7 +50,6 @@ public class ExplorerDrone extends SentientDrone {
         this.currentTask = currentTask;
     }
 
-    // Setters for mutable attributes
     public void setCurrentScanResult(String result) {
         this.currentScanResult = result;
     }
@@ -68,7 +71,6 @@ public class ExplorerDrone extends SentientDrone {
         this.currentTask = task;
     }
 
-    // Getters for immutable attributes
     public double getExplorationRange() {
         return explorationRange;
     }
@@ -89,11 +91,9 @@ public class ExplorerDrone extends SentientDrone {
         return colorScheme;
     }
 
-    // Behaviours - changes of behaviour
     public void startExploration() {
         setCurrentTask("Exploring");
         setSpeed(30.0);
-        System.out.println("Exploration started.");
     }
 
     public void performTerrainScan() {
@@ -115,5 +115,19 @@ public class ExplorerDrone extends SentientDrone {
         setCurrentTask("Emergency Return");
         setSpeed(50.0);
         System.out.println("Emergency return initiated.");
+    }
+
+    public void displayExplorerInfo() {
+        super.displayInfo();
+        System.out.println("Exploration Range: " + explorationRange);
+        System.out.println("Sensor Package: " + sensorPackage);
+        System.out.println("Onboard AI Version: " + onboardAIversion);
+        System.out.println("Base Station: " + baseStation);
+        System.out.println("Color Scheme: " + colorScheme);
+        System.out.println("Current Scan Result: " + currentScanResult);
+        System.out.println("Map Data: " + mapData);
+        System.out.println("Speed: " + speed);
+        System.out.println("Communication Status: " + communicationStatus);
+        System.out.println("Current Task: " + currentTask);
     }
 }
