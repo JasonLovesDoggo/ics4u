@@ -1,95 +1,44 @@
 public class Main {
     public static void main(String[] args) {
-        // Demonstrate basic thermometer
-        System.out.println("=== Basic Thermometer Demo ===");
+        System.out.println("=== Sentient Drone Demo ===");
 
-        // Test default constructor
-        Thermometer defaultTherm = new Thermometer();
-        System.out.println("Default Thermometer Specs: " + defaultTherm.getSpecifications());
+        // Default SentientDrone
+        SentientDrone defaultDrone = new SentientDrone();
+        System.out.println("Manufacturer: " + defaultDrone.getManufacturer());
+        System.out.println("Drone ID: " + defaultDrone.getDroneID());
+        defaultDrone.setBatteryLevel(80);
+        defaultDrone.setCurrentAltitude(100.0);
+        defaultDrone.setCurrentLocation("Base");
+        defaultDrone.setOperationalStatus("Idle");
+        defaultDrone.setMissionStatus("Standby");
+        defaultDrone.launch();
+        defaultDrone.ascend(50.0);
+        defaultDrone.performScan();
+        defaultDrone.descend(30.0);
+        defaultDrone.land();
 
-        // Test parameterized constructor and all features
-        Thermometer basicTherm = new Thermometer(
-                "ThermoTech", "Basic-100", -30.0, 100.0,
-                "BT001", "Living Room"
-        );
+        // Parameterized SentientDrone
+        SentientDrone customDrone = new SentientDrone("AeroTech", "X-Drone", "SN12345", 2023, "DR-001",
+                90, 0.0, "Hangar", "Ready");
+        System.out.println("\nCustom Drone Manufacturer: " + customDrone.getManufacturer());
+        customDrone.setBatteryLevel(100);
+        customDrone.launch();
+        customDrone.ascend(200.0);
+        customDrone.performScan();
+        customDrone.descend(150.0);
+        customDrone.land();
 
-        // Demonstrate all attribute changes
-        System.out.println("\nTesting all basic thermometer features:");
-        System.out.println("Initial status: " + basicTherm.getStatus());
+        System.out.println("\n=== Explorer Drone Demo ===");
 
-        basicTherm.togglePower();
-        System.out.println("After power on: " + basicTherm.getStatus());
-
-        basicTherm.setCurrentTemp(22.5);
-        System.out.println("Current temperature: " + basicTherm.getCurrentTemp());
-
-        basicTherm.setLocation("Kitchen");
-        System.out.println("New location: " + basicTherm.getLocation());
-
-        basicTherm.setAlarmTemp(25.0);
-        System.out.println("Alarm temperature set to: " + basicTherm.getAlarmTemp());
-
-        basicTherm.toggleAlarm();
-        System.out.println("Alarm enabled: " + basicTherm.isAlarmEnabled());
-
-        // Demonstrate all behaviors
-        System.out.println("\nTesting temperature checks:");
-        System.out.println("Is 15.0°C in range? " + basicTherm.isInRange(15.0));
-        System.out.println(basicTherm.displayTemperature());        // Default Celsius
-        System.out.println(basicTherm.displayTemperature("F"));     // Fahrenheit
-        System.out.println(basicTherm.displayTemperature("K"));     // Kelvin
-        System.out.println(basicTherm.checkAlarm());
-
-        // Demonstrate Smart Thermometer
-        System.out.println("\n=== Smart Thermometer Demo ===");
-
-        // Test default constructor
-        SmartThermometer _ = new SmartThermometer();
-        System.out.println("Default Smart Thermometer created");
-
-        // Test parameterized constructor and all features
-        SmartThermometer smartTherm = new SmartThermometer(
-                "ThermoTech", "Smart-200", -40.0, 120.0,
-                "ST001", "Office", "HomeWiFi", "AA:BB:CC:DD:EE:FF"
-        );
-
-        // Demonstrate all attribute changes
-        System.out.println("\nTesting all smart thermometer features:");
-        smartTherm.togglePower();
-        smartTherm.setCurrentTemp(23.5);
-
-        smartTherm.connectWifi();
-        System.out.println("WiFi connected: " + smartTherm.isWifiConnected());
-
-        smartTherm.setBatteryLevel(85);
-        System.out.println("Battery level: " + smartTherm.getBatteryLevel());
-
-        smartTherm.setDisplayMode("Fahrenheit");
-        System.out.println("Display mode: " + smartTherm.getDisplayMode());
-
-        smartTherm.setAutoUpdate(true);
-        System.out.println("Auto-update enabled: " + smartTherm.isAutoUpdateEnabled());
-
-        smartTherm.setScheduledMode("Night");
-        System.out.println("Scheduled mode: " + smartTherm.getScheduledMode());
-
-        // Demonstrate all behaviors
-        System.out.println("\nTesting smart features:");
-        smartTherm.setDisplayMode("Fahrenheit");
-        System.out.println(smartTherm.displayTemperature());        // Uses display mode (Fahrenheit)
-        System.out.println(smartTherm.displayTemperature("C"));     // Override to Celsius
-        System.out.println(smartTherm.displayTemperature("K"));     // Kelvin
-        System.out.println(smartTherm.displayTemperature("default")); // Uses display mode again
-        System.out.println(smartTherm.getBatteryStatus());
-        System.out.println(smartTherm.getNetworkStatus());
-        System.out.println(smartTherm.checkUpdates());
-        System.out.println(smartTherm.getDeviceInfo());
-
-        // Demonstrate inherited features still work
-        System.out.println("\nTesting inherited features:");
-        smartTherm.setAlarmTemp(30.0);
-        smartTherm.toggleAlarm();
-        System.out.println(smartTherm.checkAlarm());
-        System.out.println(smartTherm.getSpecifications());
+        // Parameterized ExplorerDrone
+        ExplorerDrone explorer = new ExplorerDrone("AeroTech", "Explorer-X", "SN54321", 2024, "DR-EX-001",
+                150.0, "AdvancedSensors", "AI v2.5", "MainBase", "StealthBlack",
+                "No Data", "Map Empty", 0.0, "Connected", "Idle");
+        System.out.println("Base Station: " + explorer.getBaseStation());
+        explorer.startExploration();
+        explorer.performTerrainScan();
+        explorer.adjustSpeed(60.0);
+        explorer.updateMap();
+        explorer.emergencyReturn();
     }
 }
