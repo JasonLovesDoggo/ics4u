@@ -15,7 +15,7 @@ public class TreeHelper {
     }
 
     public int getGrowthRate(String treeType) {
-        return growthRates.getOrDefault(treeType, 0); // Returns 0 if tree type is not found
+        return growthRates.getOrDefault(treeType, 1); // Returns 1 if tree type is not found
     }
 
     public void displayAllTrees() {

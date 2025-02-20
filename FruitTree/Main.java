@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         TreeHelper treeHelper = new TreeHelper();
-        treeHelper.addTree("Miraculus Fructus", 1); // Growth rate of the species (e.g.)
+        treeHelper.addTree("Miraculus Fructus", 3); // Growth rate of the species
 
         MiracleFruitTree tree = new MiracleFruitTree("Magic Tree", "Enchanted Forest", treeHelper);
 

@@ -85,7 +85,7 @@ public class MiracleFruitTree {
     }
 
     public boolean canRelocate() {
-        return height < 60.0 && isHealthy() && !getLifeStage().equals("Mature"); // Can't relocate if it's too tall, unhealthy, or already mature
+            return height < 10.0 && isHealthy() && !getLifeStage().equals("Mature"); // Can't relocate if it's too tall, unhealthy, or already mature
     }
 
     public String getLifeStage() {
