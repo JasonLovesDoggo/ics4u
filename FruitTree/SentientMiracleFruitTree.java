@@ -169,4 +169,90 @@ class SentientMiracleFruitTree extends MiracleFruitTree{
             return false; // enlightment failed, tree is miserable and falls back into deepSleep
         }
     }
+    public boolean test() {
+        boolean allTestsPassed = true;
+        System.out.println("\nStarting SentientMiracleFruitTree tests...\n");
+
+        // Test 1: Initial state
+        System.out.println("Test 1: Checking initial state");
+        if (consciousness == 10 && isAwake && !defenseMode && defense == 3) {
+            System.out.println("✓ Initial state test passed");
+        } else {
+            System.out.println("✗ Initial state test failed");
+            allTestsPassed = false;
+        }
+
+        // Test 2: Rest and wake cycle
+        System.out.println("\nTest 2: Testing rest and wake cycle");
+        rest();
+        if (!isAwake && consciousness == -10) {
+            wake(15);
+            if (isAwake && consciousness > 0) {
+                System.out.println("✓ Rest and wake cycle test passed");
+            } else {
+                System.out.println("✗ Rest and wake cycle test failed (wake phase)");
+                allTestsPassed = false;
+            }
+        } else {
+            System.out.println("✗ Rest and wake cycle test failed (rest phase)");
+            allTestsPassed = false;
+        }
+
+        // Test 3: Emotional state changes
+        System.out.println("\nTest 3: Testing emotional state changes");
+        String initialState = getEmotionalState();
+        changeEmotionalState(20);
+        if (!getEmotionalState().equals(initialState)) {
+            System.out.println("✓ Emotional state change test passed");
+        } else {
+            System.out.println("✗ Emotional state change test failed");
+            allTestsPassed = false;
+        }
+
+        // Test 4: Defense system
+        System.out.println("\nTest 4: Testing defense system");
+        int initialDefense = defense;
+        callOnNature();
+        if (defenseMode && defense > initialDefense) {
+            calmDown();
+            if (!defenseMode && defense < initialDefense + 50) {
+                System.out.println("✓ Defense system test passed");
+            } else {
+                System.out.println("✗ Defense system test failed (calm down phase)");
+                allTestsPassed = false;
+            }
+        } else {
+            System.out.println("✗ Defense system test failed (defense mode phase)");
+            allTestsPassed = false;
+        }
+
+        // Test 5: Socialization
+        System.out.println("\nTest 5: Testing socialization");
+        int emotionBeforeSocial = emotionalState;
+        socialize(favouriteVisitor);
+        if (emotionalState > emotionBeforeSocial) {
+            System.out.println("✓ Socialization test passed");
+        } else {
+            System.out.println("✗ Socialization test failed");
+            allTestsPassed = false;
+        }
+
+        // Test 6: Enlightenment attempt
+        System.out.println("\nTest 6: Testing enlightenment mechanics");
+        emotionalState = 40;
+        consciousness = 40;
+        boolean enlightenmentResult = achieveEnlightment();
+        if (enlightenmentResult && emotionalState == 100 && consciousness == 100) {
+            System.out.println("✓ Enlightenment success test passed");
+        } else {
+            System.out.println("✗ Enlightenment test failed");
+            allTestsPassed = false;
+        }
+
+        // Final results
+        System.out.println("\nSentient Tree Test Results Summary:");
+        System.out.println(allTestsPassed ? "All tests passed! ✓" : "Some tests failed! ✗");
+
+        return allTestsPassed;
+    }
 }
