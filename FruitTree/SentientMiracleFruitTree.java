@@ -2,18 +2,18 @@ import java.util.Objects;
 
 class SentientMiracleFruitTree extends MiracleFruitTree{
     // changeable attributes
-    boolean defenseMode;
-    int emotionalState;
-    boolean isAwake;
-    int consciousness;
-    int defense;
+    private boolean defenseMode; // Indicates if the tree is in defense mode
+    private int emotionalState;  // Tracks the current emotional state of the tree
+    private boolean isAwake;     // Determines if the tree is awake or asleep
+    private int consciousness;   // Represents the tree's consciousness level
+    private int defense;         // Indicates the current defense level of the tree
 
     // unchangeable attributes
-    double telepathicRange;
-    int natureAffinity;
-    String favouriteVisitor;
-    int wakeFactor;
-    int emotionalStability;
+    private final double telepathicRange;   // Maximum range for telepathic communication
+    private final int natureAffinity;       // Measures the tree's connection to nature
+    private final String favouriteVisitor;  // Specifies the tree's favorite visitor
+    private final int wakeFactor;           // Determines the energy required to wake up
+    private final int emotionalStability;   // Indicates how resistant the tree is to emotional changes
 
     // constructor
     public SentientMiracleFruitTree(){
