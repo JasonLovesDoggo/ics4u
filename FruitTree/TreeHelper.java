@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
+
+// This class is a helper class for storing a map of tree types and their growth rates. It's simply a wrapper around a HashMap.
 public class TreeHelper {
 
     private final Map<String, Integer> growthRates;
