@@ -32,19 +32,26 @@ public class ArraysAssignment{
 	private int[] ds;
 	private double[] ratio;
 	private int[] totalScore;
-	
+
 	ArraysAssignment() {
 		try {
-			File file = new File("stats.txt");
-			s = new Scanner(file);
+			readData();
 		} catch (Exception e) {
+			System.out.println("Error initializing data: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
+
 	
 	public void readData() {
 		try {
-			File file = new File("stats.txt");
+			String pwd = new File("").getAbsolutePath();
+			File file = new File("./data.txt");
+			// validate that the file exists
+			if (!file.exists()) {
+				System.out.println("File not found. Please ensure a data.txt file exists in the same directory as this program. Please make it relative to " + pwd );
+				System.exit(2);
+			}
 			s = new Scanner(file);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,7 +79,7 @@ public class ArraysAssignment{
 			if (s.hasNextLine()) {
 				s.nextLine(); //Clear buffer
 			}
-			double ratioValue = ((double)assists[i]+secondAssists[i])/throwaways[i]; //Calculate the ratio of assists and second assists to the number of throwaways
+			double ratioValue = ((double)assists[i]+secondAssists[i])/throwaways[i]; // Calculate the ratio of assists and second assists to the number of throwaways
 			ratio[i] = Math.round(ratioValue*10)/10.0;
 			totalScore[i] = goals[i]*3 + assists[i]*3 + secondAssists[i] - throwaways[i]*2 + ds[i]*2;
 		}
@@ -203,7 +210,6 @@ public class ArraysAssignment{
 				case 8:
 					System.out.println("Thank you for using this program. \nGoodbye!");
 					System.exit(0);
-					break;
 			}
 		}
 
