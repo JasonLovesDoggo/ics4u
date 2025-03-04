@@ -1,3 +1,22 @@
+/*
+Name: Jason, Zoe
+Date: March 4, 2025
+Teacher: Ms. Krasteva
+Description: Practice using and manipulating parallel arrays. This program ranks frisbee players based on their goals, assists, second assists, throwaways and ds, and includes an array to store the ratio of assists + second assists to the number of throwaways.
+*/
+/* 
+TODOs:
+- search results by player
+- sort players by total score/each category
+- Add player in memory
+- Save current data to file
+- Load data from file
+- Help page where we describe what all values are
+
+
+- Save current state in file?
+*/ 
+
 import java.util.*;
 
 public class ArraysAssignment {
@@ -17,7 +36,9 @@ public class ArraysAssignment {
 	
 	public void setData() {
 		for(int i = 0; i < names.length; i++) {
-			ratio[i] = (assists[i]+secondAssists[i])/throwaways[i]; //Calculate the ratio of assists and second assists to the number of throwaways
+			double ratioValue =  ((double)assists[i]+secondAssists[i])/throwaways[i]; //Calculate the ratio of assists and second assists to the number of throwaways
+			
+			ratio[i] = Math.round(ratioValue*10)/10.0;
 			totalScore[i] = goals[i]*3 + assists[i]*3 + secondAssists[i] - throwaways[i]*2 + ds[i]*2;
 		}
 	}
