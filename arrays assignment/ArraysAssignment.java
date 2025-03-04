@@ -43,6 +43,12 @@ public class ArraysAssignment{
 	}
 	
 	public void readData() {
+		try {
+			File file = new File("stats.txt");
+			s = new Scanner(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		int n = s.nextInt(); //read in the number of players
 		s.nextLine(); //clear buffer
 		
@@ -102,14 +108,41 @@ public class ArraysAssignment{
 		return text;
 	}
 	
+	public String helpPage() {
+		String text = "\tThis program allows you to rank frisbee players based on their stats.\n\n\tYou are able to display all the players, sort players based on a category,\nview a certain player's stats, add a player, save that player,\nand upload data from a file.\n";
+		text+="\n\tSome abbreviations are used when displaying stats in a table. Here's what they mean:\n\t\tGoals: G\n\t\tAssists: A\n\t\tSecond assist: 2A\n\t\tThrowaways: TA\n\t\tDefenses/blocks: Ds\n\t\tRatio: the ratio of assists + second assists to throwaways\n\t\tTotal: the weighted total score based on the other stats.\n";
+		text+="\n\tWeightings are used to calculate the total score. Here are the weightings for each of the stats:\n\t\tGoals: 3 points per goal\n\t\tAssists: 3 points per assist\n\t\tSecond assists: 1 point per second assist\n\t\tThrowaways: -2 points per throwaway\n\t\tDefenses: 2 points per defense\n";
+		return text;
+	}
+	
+	public String viewPlayer(String name) {
+		int player = -1;
+		for(int i = 0; i < names.length; i++) {
+			if (name.toLowerCase().equals(names[i].toLowerCase())) {
+				player = i;
+			}
+		}
+		if (player >= 0) {
+			String text = names[player];
+			text+="\n\tGoals: "+goals[player]+"\n\tAssists: "+assists[player]+"\n\tSecond assists: "+secondAssists[player]+"\n\tThrowaways: "+throwaways[player]+"\n\tDefenses: "+ds[player]+"\n\tRatio of assists + second assists to throwaways: "+ratio[player]+"\n\tTotal score: "+totalScore[player];
+			return text;
+		} else {
+			return "No player by the name of "+ name+" found.";
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		ArraysAssignment a = new ArraysAssignment();		
 		Scanner s = new Scanner(System.in);
 		a.readData();
 		boolean run = true;
+		System.out.println(a.helpPage());
+		System.out.println("Press enter to continue to the program.");
+		s.nextLine();
 		
 		while (run) {
-			System.out.println("This program stores the stats for ultimate frisbee players.\nThere are currently " + a.names.length + " players stored in this system.");
+			System.out.println("There are currently " + a.names.length + " players stored in this system.");
 			boolean takeInput = true;
 			int choice = 0;
 			
@@ -133,26 +166,42 @@ public class ArraysAssignment{
 			}
 			
 			switch (choice) {
-				case 1:
+				case 1: //Display all the players and their stats
 					System.out.println(a.displayAll());
 					System.out.println("Press enter to return to the main menu.");
 					s.nextLine();
 					break;
-				case 2: 
+				case 2: //Sort players by a category
 					
 					break;
-				case 3: 
+				case 3: //View a certain player's stats
+					System.out.println("Please pick a player: ");
+					for(String player : a.names) {
+						System.out.println("\t-\t " + player);
+					}
+					String player = s.nextLine();
+					System.out.println(a.viewPlayer(player));
+					System.out.println("Press enter to return to the main menu.");
+					s.nextLine();
 					break;
-				case 4:
+				case 4: //Add a player in memory
+					
 					break;
-				case 5:
+				case 5: //Save current data to a file
+					
 					break;
 				case 6:
+					a.readData(); //Reads in the data from a file
+					System.out.println("File read. Data updated.\nPress enter to return to the main menu.");
+					s.nextLine();
 					break;
 				case 7: 
+					System.out.println(a.helpPage()); //Call & print the help page
+					System.out.println("Press enter to return to the main menu.");
+					s.nextLine();
 					break; 
 				case 8:
-					System.out.println("Thank you for using this program. Goodbye!");
+					System.out.println("Thank you for using this program. \nGoodbye!");
 					System.exit(0);
 					break;
 			}
