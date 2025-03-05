@@ -6,9 +6,9 @@ Description: Practice using and manipulating parallel arrays. This program ranks
 */
 /* 
 TODOs:
-- search results by player - Zoe
+[DONE] search results by player - Zoe
 - sort players by total score/each category - Jason
-- Add player in memory - Jason
+[DONE] Add player in memory - Jason
 - Remove player from memory - Jason
 [DONE] Save current data to file - Jason
 [DONE] Load data from file - Zoe
@@ -103,12 +103,16 @@ public class ArraysAssignment{
 			if (s.hasNextLine()) {
 				s.nextLine(); //Clear buffer
 			}
-			double ratioValue = ((double)assists[i]+secondAssists[i])/throwaways[i]; // Calculate the ratio of assists and second assists to the number of throwaways
-			ratio[i] = Math.round(ratioValue*10)/10.0;
-			totalScore[i] = goals[i]*3 + assists[i]*3 + secondAssists[i] - throwaways[i]*2 + ds[i]*2;
+			calculateScores(i);
 		}
 	}
-	
+
+	private void calculateScores(int i) {
+		double ratioValue = ((double)assists[i]+secondAssists[i])/throwaways[i]; // Calculate the ratio of assists and second assists to the number of throwaways
+		ratio[i] = Math.round(ratioValue*10)/10.0;
+		totalScore[i] = goals[i]*3 + assists[i]*3 + secondAssists[i] - throwaways[i]*2 + ds[i]*2;
+	}
+
 	public void sort(String sortBy) { //Copy the arrays, then sort them. Return sorted arrays (no return type right now because I'm lazy)
 		
 	}
@@ -205,9 +209,7 @@ public class ArraysAssignment{
 		ratio[ratio.length - 1] = _assists + _secondAssists;
 
 		int i = names.length - 1;
-		double ratioValue = ((double)assists[i]+secondAssists[i])/throwaways[i];
-		ratio[i] = Math.round(ratioValue*10)/10.0;
-		totalScore[i] = goals[i]*3 + assists[i]*3 + secondAssists[i] - throwaways[i]*2 + ds[i]*2;
+		calculateScores(i);
 	}
 
 	public static void main(String[] args) {
