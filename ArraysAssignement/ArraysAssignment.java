@@ -9,14 +9,12 @@ TODOs:
 - search results by player - Zoe
 - sort players by total score/each category - Jason
 - Add player in memory - Jason
-- Save current data to file - Jason
-- Load data from file - Zoe
-- Help page where we describe what all values are - Zoe
-
-
-- Save current state in file?
+[DONE] Save current data to file - Jason
+[DONE] Load data from file - Zoe
+[DONE] Help page where we describe what all values are - Zoe
 */
 
+import java.io.PrintWriter;
 import java.util.*;
 import java.io.File;
 
@@ -42,7 +40,33 @@ public class ArraysAssignment{
 		}
 	}
 
-	
+	public boolean saveData() {
+		// Returns true if the data was saved successfully, false otherwise.
+
+		try {
+			File file = new File("./data.txt");
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			PrintWriter writer = new PrintWriter(file);
+			writer.println(names.length);
+			for(int i = 0; i < names.length; i++) {
+				writer.println(names[i]);
+				writer.println(goals[i]);
+				writer.println(assists[i]);
+				writer.println(secondAssists[i]);
+				writer.println(throwaways[i]);
+				writer.println(ds[i]);
+			}
+			writer.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
 	public void readData() {
 		try {
 			String pwd = new File("").getAbsolutePath();
@@ -216,6 +240,11 @@ public class ArraysAssignment{
 					
 					break;
 				case 5: //Save current data to a file
+					if (a.saveData()) {
+						System.out.println("Data saved successfully.");
+					} else {
+						System.out.println("Data could not be saved, please try again.");
+					}
 					
 					break;
 				case 6:
