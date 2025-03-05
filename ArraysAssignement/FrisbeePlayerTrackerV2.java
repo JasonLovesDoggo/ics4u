@@ -312,9 +312,17 @@ public class FrisbeePlayerTrackerV2 {
                         for (int i = 0; i < playerCount; i++) {
                             System.out.println("\t" + (i+1) + ". " + names[i]);
                         }
-                        System.out.println("Please pick a player: ");
-                        String playerName = scanner.nextLine();
-                        System.out.println(viewPlayer(playerName));
+                        System.out.println("Enter player number: ");
+                        try {
+                            int playerNum = Integer.parseInt(scanner.nextLine()) - 1;
+                            if (playerNum >= 0 && playerNum < names.length) {
+                                System.out.println(viewPlayer(names[playerNum]));
+                            } else {
+                                System.out.println("Invalid player number.");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Please enter a valid number.");
+                        }
                         pressEnterToContinue(scanner);
                         break;
                     case 4: // Add player
