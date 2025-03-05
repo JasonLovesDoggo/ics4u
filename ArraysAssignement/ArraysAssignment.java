@@ -9,6 +9,7 @@ TODOs:
 - search results by player - Zoe
 - sort players by total score/each category - Jason
 - Add player in memory - Jason
+- Remove player from memory - Jason
 [DONE] Save current data to file - Jason
 [DONE] Load data from file - Zoe
 [DONE] Help page where we describe what all values are - Zoe
@@ -21,7 +22,6 @@ import java.io.File;
 public class ArraysAssignment{
 	
 	Scanner s;
-	private int n;
 	private String[] names;
 	private int[] goals;
 	private int[] assists;
@@ -52,10 +52,10 @@ public class ArraysAssignment{
 			writer.println(names.length);
 			for(int i = 0; i < names.length; i++) {
 				writer.println(names[i]);
-				writer.println(goals[i]);
-				writer.println(assists[i]);
-				writer.println(secondAssists[i]);
-				writer.println(throwaways[i]);
+				writer.print(goals[i] + " ");
+				writer.print(assists[i] + " ");
+				writer.print(secondAssists[i] + " ");
+				writer.print(throwaways[i] + " ");
 				writer.println(ds[i]);
 			}
 			writer.close();
@@ -184,7 +184,32 @@ public class ArraysAssignment{
 		}
 		
 	}
-	
+	public void addPlayer(String _name, int _goals, int _assists, int _secondAssists, int _throwaways, int _defenses) {
+		// Extend the length of all arrays by one
+		names = Arrays.copyOf(names, names.length + 1);
+		goals = Arrays.copyOf(goals, goals.length + 1);
+		assists = Arrays.copyOf(assists, assists.length + 1);
+		secondAssists = Arrays.copyOf(secondAssists, secondAssists.length + 1);
+		throwaways = Arrays.copyOf(throwaways, throwaways.length + 1);
+		ds = Arrays.copyOf(ds, ds.length + 1);
+		ratio = Arrays.copyOf(ratio, ratio.length + 1);
+		totalScore = Arrays.copyOf(totalScore, totalScore.length + 1);
+
+		// Add the new player to the arrays
+		names[names.length - 1] = _name;
+		goals[goals.length - 1] = _goals;
+		assists[assists.length - 1] = _assists;
+		secondAssists[secondAssists.length - 1] = _secondAssists;
+		throwaways[throwaways.length - 1] = _throwaways;
+		ds[ds.length - 1] = _defenses;
+		ratio[ratio.length - 1] = _assists + _secondAssists;
+
+		int i = names.length - 1;
+		double ratioValue = ((double)assists[i]+secondAssists[i])/throwaways[i];
+		ratio[i] = Math.round(ratioValue*10)/10.0;
+		totalScore[i] = goals[i]*3 + assists[i]*3 + secondAssists[i] - throwaways[i]*2 + ds[i]*2;
+	}
+
 	public static void main(String[] args) {
 		ArraysAssignment a = new ArraysAssignment();		
 		Scanner s = new Scanner(System.in);
@@ -237,7 +262,20 @@ public class ArraysAssignment{
 					s.nextLine();
 					break;
 				case 4: //Add a player in memory
-					
+					System.out.println("Please enter the player's name: ");
+					String name = s.nextLine();
+					System.out.println("Please enter the player's goals: ");
+					int goals = s.nextInt();
+					System.out.println("Please enter the player's assists: ");
+					int assists = s.nextInt();
+					System.out.println("Please enter the player's second assists: ");
+					int secondAssists = s.nextInt();
+					System.out.println("Please enter the player's throwaways: ");
+					int throwaways = s.nextInt();
+					System.out.println("Please enter the player's defenses: ");
+					int defenses = s.nextInt();
+
+					a.addPlayer(name, goals, assists, secondAssists, throwaways, defenses);
 					break;
 				case 5: //Save current data to a file
 					if (a.saveData()) {
