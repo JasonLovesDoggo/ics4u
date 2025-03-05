@@ -286,6 +286,8 @@ public class FrisbeePlayerTracker {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
+		new FrisbeePlayerTracker(); // Initialize the arrays
+
 		// Pre-populate with some initial data
 		addPlayer("Jason", 5, 3, 2, 1, 4);
 		addPlayer("Zoe", 4, 4, 3, 2, 3);
