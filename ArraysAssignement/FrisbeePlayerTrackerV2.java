@@ -124,8 +124,7 @@ public class FrisbeePlayerTrackerV2 {
         double throwawayValue = playerStats[index][THROWAWAYS] == 0 ? 1 : playerStats[index][THROWAWAYS];
 
         // Calculate ratio of assists and second assists to throwaways
-        playerStats[index][RATIO] = (playerStats[index][ASSISTS] + playerStats[index][SECOND_ASSISTS]) / throwawayValue;
-        playerStats[index][RATIO] = Math.round(playerStats[index][RATIO] * 10.0) / 10.0;
+        playerStats[index][RATIO] = Math.round((playerStats[index][ASSISTS] + playerStats[index][SECOND_ASSISTS]) / throwawayValue * 10.0) / 10.0;
 
         // Calculate total score with weighted values
         playerStats[index][TOTAL_SCORE] =
@@ -162,20 +161,28 @@ public class FrisbeePlayerTrackerV2 {
         playerCount++;
     }
 
+    // Remove a player by index
+    public static boolean removePlayerByIndex(int index) {
+        if (index >= 0 && index < playerCount) {
+            // Shift elements to remove the player
+            for (int j = index; j < playerCount - 1; j++) {
+                names[j] = names[j + 1];
+                System.arraycopy(playerStats[j+1], 0, playerStats[j], 0, STAT_COUNT);
+            }
+
+            // Null out the last element and decrease player count
+            names[playerCount - 1] = null;
+            playerCount--;
+            return true;
+        }
+        return false;
+    }
+
     // Remove a player by name
     public static boolean removePlayer(String name) {
         for (int i = 0; i < playerCount; i++) {
             if (name.equalsIgnoreCase(names[i])) {
-                // Shift elements to remove the player
-                for (int j = i; j < playerCount - 1; j++) {
-                    names[j] = names[j + 1];
-                    System.arraycopy(playerStats[j+1], 0, playerStats[j], 0, STAT_COUNT);
-                }
-
-                // Null out the last element and decrease player count
-                names[playerCount - 1] = null;
-                playerCount--;
-                return true;
+                return removePlayerByIndex(i);
             }
         }
         return false;
@@ -303,7 +310,7 @@ public class FrisbeePlayerTrackerV2 {
                     case 3: // View player stats
                         System.out.println("Players:");
                         for (int i = 0; i < playerCount; i++) {
-                            System.out.println("\t- " + names[i]);
+                            System.out.println("\t" + (i+1) + ". " + names[i]);
                         }
                         System.out.println("Please pick a player: ");
                         String playerName = scanner.nextLine();
@@ -314,12 +321,24 @@ public class FrisbeePlayerTrackerV2 {
                         addPlayerMenu(scanner);
                         break;
                     case 5: // Remove player
-                        System.out.println("Enter the name of the player to remove:");
-                        String removePlayerName = scanner.nextLine();
-                        if (removePlayer(removePlayerName)) {
-                            System.out.println("Player removed successfully.");
+                        if (playerCount == 0) {
+                            System.out.println("No players to remove.");
                         } else {
-                            System.out.println("Player not found.");
+                            System.out.println("Select a player to remove:");
+                            for (int i = 0; i < playerCount; i++) {
+                                System.out.println("\t" + (i+1) + ". " + names[i]);
+                            }
+                            System.out.print("Enter player number: ");
+                            try {
+                                int playerIndex = Integer.parseInt(scanner.nextLine()) - 1;
+                                if (removePlayerByIndex(playerIndex)) {
+                                    System.out.println("Player removed successfully.");
+                                } else {
+                                    System.out.println("Invalid player number.");
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Please enter a valid number.");
+                            }
                         }
                         pressEnterToContinue(scanner);
                         break;
