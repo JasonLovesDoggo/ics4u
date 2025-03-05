@@ -56,7 +56,7 @@ public class ArraysAssignment{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		int n = s.nextInt(); //read in the number of players
+		int n = s.nextInt(); //read in the amount players
 		s.nextLine(); //clear buffer
 		
 		//Set the sizes of each of the arrays
@@ -90,42 +90,64 @@ public class ArraysAssignment{
 	}
 	
 	public String displayAll() {
-		String text = "\tPlayer name\t\t\t\t|\tG\t|\tA\t|\t2A\t|\tTA\t|\tDs\t| Ratio |\tTotal\n";
-		text+="--------------------------------------------------------------------------";
-		text+="\n";
+		StringBuilder text = new StringBuilder("\tPlayer name\t\t\t\t|\tG\t|\tA\t|\t2A\t|\tTA\t|\tDs\t| Ratio |\tTotal\n");
+		text.append("--------------------------------------------------------------------------");
+		text.append("\n");
 		for(int i = 0; i < names.length; i++) {
 			if (names[i].length() > 20) {
-				text+="\t"+names[i].substring(0, 17) +"...\t";
+				text.append("\t").append(names[i], 0, 17).append("...\t");
 			} else if (names[i].length() > 17) {
-				text+="\t"+names[i]+"\t";
+				text.append("\t").append(names[i]).append("\t");
 			} else if (names[i].length() > 14) {
-				text+="\t"+names[i]+"\t\t";
+				text.append("\t").append(names[i]).append("\t\t");
 			} else if (names[i].length() > 11) {
-				text+="\t"+names[i]+"\t\t\t";
+				text.append("\t").append(names[i]).append("\t\t\t");
 			} else if (names[i].length() > 8) {
-				text+="\t"+names[i]+"\t\t\t\t";
+				text.append("\t").append(names[i]).append("\t\t\t\t");
 			} else if (names[i].length() > 5) {
-				text+="\t"+names[i]+"\t\t\t\t\t";
+				text.append("\t").append(names[i]).append("\t\t\t\t\t");
 			} else {
-				text+="\t"+names[i]+"\t\t\t\t\t\t";
+				text.append("\t").append(names[i]).append("\t\t\t\t\t\t");
 			}
-			text+="|\t"+goals[i]+"\t|\t"+assists[i]+"\t|\t"+secondAssists[i]+"\t|\t"+throwaways[i]+"\t|\t"+ds[i]+"\t|\t"+ratio[i]+"  |\t"+totalScore[i]+"\n";
+			text.append("|\t").append(goals[i]).append("\t|\t").append(assists[i]).append("\t|\t").append(secondAssists[i]).append("\t|\t").append(throwaways[i]).append("\t|\t").append(ds[i]).append("\t|\t").append(ratio[i]).append("  |\t").append(totalScore[i]).append("\n");
 		}
-		text+="--------------------------------------------------------------------------";
-		return text;
+		text.append("--------------------------------------------------------------------------");
+		return text.toString();
 	}
-	
+
 	public String helpPage() {
-		String text = "\tThis program allows you to rank frisbee players based on their stats.\n\n\tYou are able to display all the players, sort players based on a category,\nview a certain player's stats, add a player, save that player,\nand upload data from a file.\n";
-		text+="\n\tSome abbreviations are used when displaying stats in a table. Here's what they mean:\n\t\tGoals: G\n\t\tAssists: A\n\t\tSecond assist: 2A\n\t\tThrowaways: TA\n\t\tDefenses/blocks: Ds\n\t\tRatio: the ratio of assists + second assists to throwaways\n\t\tTotal: the weighted total score based on the other stats.\n";
-		text+="\n\tWeightings are used to calculate the total score. Here are the weightings for each of the stats:\n\t\tGoals: 3 points per goal\n\t\tAssists: 3 points per assist\n\t\tSecond assists: 1 point per second assist\n\t\tThrowaways: -2 points per throwaway\n\t\tDefenses: 2 points per defense\n";
-		return text;
+		return """
+                Frisbee Player Ranking Program Help
+                --------------------------------
+                
+                Program Overview:
+                - Display all players
+                - Sort players by category
+                - View individual player stats
+                - Add and save players
+                - Upload data from file
+                
+                Stat Abbreviations:
+                \tG   = Goals
+                \tA   = Assists
+                \t2A  = Second Assist
+                \tTA  = Throwaways
+                \tDs  = Defenses/Blocks
+                \tRatio = Assists + Second Assists to Throwaways
+                \tTotal = Weighted Score
+                
+                Stat Weightings:
+                \tGoals:          +3 points
+                \tAssists:        +3 points
+                \tSecond Assists: +1 point
+                \tThrowaways:     -2 points
+                \tDefenses:       +2 points""";
 	}
 	
 	public String viewPlayer(String name) {
 		int player = -1;
 		for(int i = 0; i < names.length; i++) {
-			if (name.toLowerCase().equals(names[i].toLowerCase())) {
+			if (name.equalsIgnoreCase(names[i])) {
 				player = i;
 			}
 		}
@@ -143,12 +165,11 @@ public class ArraysAssignment{
 		ArraysAssignment a = new ArraysAssignment();		
 		Scanner s = new Scanner(System.in);
 		a.readData();
-		boolean run = true;
 		System.out.println(a.helpPage());
 		System.out.println("Press enter to continue to the program.");
 		s.nextLine();
 		
-		while (run) {
+		while (true) {
 			System.out.println("There are currently " + a.names.length + " players stored in this system.");
 			boolean takeInput = true;
 			int choice = 0;
