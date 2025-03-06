@@ -13,7 +13,7 @@ TODOs:
 [DONE] Save current data to file - Jason
 [DONE] Load data from file - Zoe
 [DONE] Help page where we describe what all values are - Zoe
-- Validate enter player data
+[DONE] Validate enter player data - Jason
 */
 
 import java.io.*;
@@ -439,33 +439,80 @@ public class FrisbeePlayerTrackerV2 {
         scanner.nextLine();
     }
 
+    private static boolean isPositiveInt(String input) {
+        try {
+            int num = Integer.parseInt(input);
+            return num >= 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     // Add player through menu
     private static void addPlayerMenu(Scanner scanner) {
         try {
+            // Get player's name
             System.out.println("Please enter the player's name: ");
             String name = scanner.nextLine();
+            while (name.isBlank() || !name.matches("[A-Za-z]+( [A-Za-z]+)+")) { // Validate name to be at least two words that space separated
+                System.out.println("Invalid name. Please enter a valid name: ");
+                name = scanner.nextLine();
+            }
 
+            // Get player's goals
             System.out.println("Please enter the player's goals: ");
-            int goals = Integer.parseInt(scanner.nextLine());
+            String input = scanner.nextLine();
+            while (!isPositiveInt(input)) { // Validate positive integer
+                System.out.println("Invalid input. Please enter a positive number: ");
+                input = scanner.nextLine();
+            }
+            int goals = Integer.parseInt(input);
 
+            // Get player's assists
             System.out.println("Please enter the player's assists: ");
-            int assists = Integer.parseInt(scanner.nextLine());
+            input = scanner.nextLine();
+            while (!isPositiveInt(input)) { // Validate positive integer
+                System.out.println("Invalid input. Please enter a positive number: ");
+                input = scanner.nextLine();
+            }
+            int assists = Integer.parseInt(input);
 
+            // Get player's second assists
             System.out.println("Please enter the player's second assists: ");
-            int secondAssists = Integer.parseInt(scanner.nextLine());
+            input = scanner.nextLine();
+            while (!isPositiveInt(input)) { // Validate positive integer
+                System.out.println("Invalid input. Please enter a positive number: ");
+                input = scanner.nextLine();
+            }
+            int secondAssists = Integer.parseInt(input);
 
+            // Get player's throwaways
             System.out.println("Please enter the player's throwaways: ");
-            int throwaways = Integer.parseInt(scanner.nextLine());
+            input = scanner.nextLine();
+            while (!isPositiveInt(input)) { // Validate positive integer
+                System.out.println("Invalid input. Please enter a positive number: ");
+                input = scanner.nextLine();
+            }
+            int throwaways = Integer.parseInt(input);
 
+            // Get player's defenses
             System.out.println("Please enter the player's defenses: ");
-            int defenses = Integer.parseInt(scanner.nextLine());
+            input = scanner.nextLine();
+            while (!isPositiveInt(input)) { // Validate positive integer
+                System.out.println("Invalid input. Please enter a positive number: ");
+                input = scanner.nextLine();
+            }
+            int defenses = Integer.parseInt(input);
 
+            // Add player
             addPlayer(name, goals, assists, secondAssists, throwaways, defenses);
             System.out.println("Player added successfully.");
             pressEnterToContinue(scanner);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Player not added.");
+        } catch (Exception e) { // Catch unexpected exceptions
+            System.out.println("An unexpected error occurred. Player not added.");
             pressEnterToContinue(scanner);
         }
     }
+
 }
+
