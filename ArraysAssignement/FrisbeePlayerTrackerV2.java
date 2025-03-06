@@ -13,6 +13,7 @@ TODOs:
 [DONE] Save current data to file - Jason
 [DONE] Load data from file - Zoe
 [DONE] Help page where we describe what all values are - Zoe
+- Validate enter player data
 */
 
 import java.io.*;
@@ -312,7 +313,7 @@ public class FrisbeePlayerTrackerV2 {
                         for (int i = 0; i < playerCount; i++) {
                             System.out.println("\t" + (i+1) + ". " + names[i]);
                         }
-                        System.out.println("Enter player number: ");
+                        System.out.print("Enter player number: ");
                         try {
                             int playerNum = Integer.parseInt(scanner.nextLine()) - 1;
                             if (playerNum >= 0 && playerNum < names.length) {
