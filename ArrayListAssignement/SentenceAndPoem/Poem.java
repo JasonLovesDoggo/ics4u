@@ -1,6 +1,6 @@
 /**
  * @author Justin Jiang
- * ICS4U1
+ * ICS4U
  * Mrs. Krasteva
  * Poem Randomizer 
  */
