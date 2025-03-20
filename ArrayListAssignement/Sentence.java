@@ -85,7 +85,7 @@ public class Sentence { //Sentence class
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 
-    /*
+    /**
      * Creates a set of randomized, gramatically correct sentences
      * 
      * Ths method uses the previously initialized ArrayLists and generates sentences using the form:
