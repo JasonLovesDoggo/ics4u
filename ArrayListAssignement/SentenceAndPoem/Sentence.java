@@ -1,6 +1,6 @@
 /**
  * @author Justin Jiang
- * ICS4U1
+ * ICS4U
  * Mrs. Krasteva
  * Java program to create random sentences using ArrayLists
  */
@@ -15,7 +15,7 @@ public class Sentence { //Sentence class
     private ArrayList<String> adverbs = new ArrayList<String>();
     private ArrayList<String> adjectives = new ArrayList<String>();
 
-    public Sentence() { //initialize all ArrayLists with daya
+    public Sentence() { //initialize all ArrayLists with data
 
         articles.add("A");
         articles.add("The");
