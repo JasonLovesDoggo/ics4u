@@ -66,7 +66,6 @@ public class UniversityRanker {
         stdin.nextLine();
     }
 
-
     void start() {
         stdin = new Scanner(System.in);
 
@@ -104,6 +103,79 @@ public class UniversityRanker {
                         promptContinue();
                         break;
                     }
+                    case 3: {
+                        try {
+                            System.out.println("Please enter the name of the university:");
+                            String name = stdin.nextLine();
+                            System.out.println("Please enter the city of the university:");
+                            String city = stdin.nextLine();
+                            System.out.println("Please enter the global ranking of the university:");
+                            short globalRanking;
+                            while (true) {
+                                try {
+                                    globalRanking = Short.parseShort(stdin.nextLine());
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println("That is not a valid short. Please keep your input to a integer");
+                                }
+                            }
+                            System.out.println("Please enter the program of interest:");
+                            String programOfInterest = stdin.nextLine();
+                            System.out.println("Please enter the second program of interest:");
+                            String secondProgramOfInterest = stdin.nextLine();
+                            System.out.println("Please enter the cost per year:");
+                            double costPerYear;
+                            while (true) {
+                                try {
+                                    costPerYear = Double.parseDouble(stdin.nextLine());
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println("That is not a valid double. Please keep your input to a double");
+                                }
+                            }
+                            System.out.println("Please enter the required admission grade:");
+                            float requiredAdmissionGrade;
+                            while (true) {
+                                try {
+                                    requiredAdmissionGrade = Float.parseFloat(stdin.nextLine());
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println("That is not a valid float. Please keep your input to a float");
+                                }
+                            }
+                            System.out.println("Please enter the personal ranking:");
+                            short personalRanking;
+                            while (true) {
+                                try {
+                                    personalRanking = Short.parseShort(stdin.nextLine());
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println("That is not a valid short. Please keep your input to a integer");
+                                }
+                            }
+
+                            universities.add(new University(name, city, globalRanking, programOfInterest, secondProgramOfInterest, costPerYear, requiredAdmissionGrade, personalRanking));
+
+                            System.out.println(name + " added successfully.");
+                            promptContinue();
+                            break;
+                        } catch (Exception e) {
+                            System.out.println("Error with your  input. Please try again");
+                            promptContinue();
+                        }
+                        break;
+
+                    }
+                    case 4: {
+                        University university = getUniversity("Which university do you want to remove?");
+
+                        universities.remove(university);
+
+                        System.out.println(university.name + " removed successfully.");
+
+                        promptContinue();
+                        break;
+                    }
                     case 5: {
                         University university = getUniversity("Which university do you want to edit?");
 
@@ -130,9 +202,11 @@ public class UniversityRanker {
                     }
                     case 6:
                         saveData();
+                        promptContinue();
                         break;
                     case 7:
                         loadData();
+                        promptContinue();
                         break;
                     case 8: {
                         saveData();
