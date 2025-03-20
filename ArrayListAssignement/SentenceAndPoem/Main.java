@@ -1,6 +1,6 @@
 /**
  * @author Justin Jiang
- * ICS4U1
+ * ICS4U
  * Mrs. Krasteva
  * Driver Class for Sentence
  */
@@ -14,11 +14,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Enter the number of sentences you would like to generate (default=5): ");
         int num;
+        
         try {
             num = Integer.parseInt(br.readLine());
         } catch (Exception e) {
             num = 5;
         }
+        
         ArrayList<String> sentences = sentence.makeSentences(Math.abs(num));
         for (String s : sentences) {
             System.out.println(s);
