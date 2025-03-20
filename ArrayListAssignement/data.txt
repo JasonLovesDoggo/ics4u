@@ -1,0 +1,6 @@
+5
+Stanford;Stanford, USA;2;Computer Science;Bioengineering;80000.0;90.0;10
+Waterloo;Waterloo, Canada;25;Computer Science;Systems Design Engineering;50000.0;85.0;10
+Georgia Tech;Atlanta, USA;15;Computer Science;Cybersecurity;45000.0;88.0;8
+UCSD;San Diego, USA;30;Computer Science;Data Science;42000.0;87.0;7
+UC Berkeley;Berkeley, USA;12;Computer Science;Cybersecurity;50808.0;85.0;9

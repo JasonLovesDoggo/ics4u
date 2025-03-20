@@ -28,12 +28,10 @@ public class FrisbeePlayerTrackerV2 {
     private static final int RATIO = 5;
     private static final int TOTAL_SCORE = 6;
     private static final int STAT_COUNT = 7; // Total number of statistics columns
-
     // Player data storage
     private static String[] names;
     private static double[][] playerStats; // 2D array for all player stats
     private static int playerCount;
-
     private static String DEFAULT_FILE_PATH = "./data.txt";
 
     // Initialize arrays with a default capacity
@@ -154,7 +152,7 @@ public class FrisbeePlayerTrackerV2 {
         playerStats[playerCount][GOALS] = goal;
         playerStats[playerCount][ASSISTS] = assist;
         playerStats[playerCount][SECOND_ASSISTS] = secondAssist;
-        playerStats[playerCount][THROWAWAYS] = throwaway;
+        playerStats[playerCount][THROWAWAYS] = throwaway; // 3 is the index of the throwaways stat
         playerStats[playerCount][DS] = defense;
 
         calculateScores(playerCount);
@@ -281,7 +279,7 @@ public class FrisbeePlayerTrackerV2 {
         Scanner scanner = new Scanner(System.in);
 
         // Create an instance of the class to initialize arrays
-        new FrisbeePlayerTrackerV2();
+        new FrisbeePlayerTrackerV2(DEFAULT_FILE_PATH);
 
         // Pre-populate with some initial data
         addPlayer("Jason", 5, 3, 2, 1, 4);
@@ -460,3 +458,5 @@ public class FrisbeePlayerTrackerV2 {
         }
     }
 }
+
+

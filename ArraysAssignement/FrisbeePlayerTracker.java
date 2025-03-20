@@ -13,6 +13,7 @@ TODOs:
 [DONE] Save current data to file - Jason
 [DONE] Load data from file - Zoe
 [DONE] Help page where we describe what all values are - Zoe
+- Make remove a player list the players - Jason
 */
 
 
