@@ -1,3 +1,5 @@
+package UniversityRanker;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -69,7 +71,7 @@ public class UniversityRanker {
     void start() {
         stdin = new Scanner(System.in);
 
-        System.out.println("Welcome to UNIVERSITY RANKER!!!\n\n");
+        System.out.println("\nWelcome to UNIVERSITY RANKER!!!\n");
         while (true) {
             System.out.println("\nThere are currently " + universities.size() + " universities stored in this system.");
             System.out.println("You may:\n\t1. display all\n\t2. view specific university\n\t3. add new university\n\t4. remove a university\n\t5. edit a university\n\t6. save to file\n\t7. load from file\n\t8. exit the program");

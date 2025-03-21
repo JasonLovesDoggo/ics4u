@@ -1,3 +1,5 @@
+package SentenceAndPoem;
+
 /**
  * @author Justin Jiang
  * ICS4U
