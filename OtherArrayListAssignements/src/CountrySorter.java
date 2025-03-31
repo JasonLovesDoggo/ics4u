@@ -10,8 +10,6 @@ import java.util.*;
 import java.text.NumberFormat; // For population formatting
 
 public class CountrySorter {
-
-    // --- Configuration ---
     private static final String INPUT_FILE_NAME = "Countries-Population.txt";
     private static final String OUTPUT_FILE_SORTED_BY_NAME = "sortedByCountry.txt";
     private static final String OUTPUT_FILE_SORTED_BY_POPULATION = "sortedByPopulation.txt";
@@ -76,7 +74,7 @@ public class CountrySorter {
                 }
                 line = line.trim();
                 lineCount++;
-                if (line.isEmpty()) continue;
+                if (line.isEmpty()) continue; // Ignore empty lines
 
                 try {
 
