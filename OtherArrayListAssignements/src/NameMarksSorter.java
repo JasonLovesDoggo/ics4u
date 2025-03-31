@@ -98,7 +98,7 @@ public class NameMarksSorter {
     public static void main(String[] args) {
         ArrayList<String> names = new ArrayList<>();
         ArrayList<Integer> marks = new ArrayList<>();
-        String filename = "src/A7-1.txt";  // Path to the file containing the names and marks
+        String filename = "A7-1.txt";  // Path to the file containing the names and marks
 
         try {
             // a) Read data from the file
