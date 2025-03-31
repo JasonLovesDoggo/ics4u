@@ -43,10 +43,8 @@ public class AnimalSorter {
     }
 
     public static void main(String[] args) {
-        // Initial list of animals using constructor
         String[] animals = {"Bat", "Cat", "Cow", "Dog", "Elk", "Fly", "Fox", "Gnu", "Hen", "Owl", "Pig", "Rat", "Yak"};
 
-        // Sort the list using bubble sort
         bubbleSort(animals);
 
         String searchTerm = "Fox";
