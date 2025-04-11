@@ -26,8 +26,8 @@ public class Game {
         String playerName = scanner.nextLine();
 
         if (playerName.isEmpty()) {
-            System.out.println("Welcome oh brave Zoeiye\"s Li!");
-            playerName = "Zoeiye\"s li";
+            System.out.println("Welcome oh brave Glorfindel!");
+            playerName = "Glorfindel";
         }
         player = new Player(playerName);
 
@@ -136,6 +136,9 @@ public class Game {
         System.out.println("Health: " + player.getHealth() + "%");
         System.out.println("Gold: " + player.getGold() + "/" + player.getGoldCapacity());
         System.out.println("Current Location: " + player.getCurrentRoom().getDescription());
+		  if (player.getNumPets() > 0) {
+		  		System.out.println("Pets: " + player.getPets());
+		  }
     }
 
     private void handleRoomOptions() {
