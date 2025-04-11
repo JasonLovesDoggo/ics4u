@@ -24,6 +24,11 @@ public class Game {
         System.out.println("Welcome to the Castle Adventure!");
         System.out.println("What is your name, brave elf?");
         String playerName = scanner.nextLine();
+
+        if (playerName.isEmpty()) {
+            System.out.println("Welcome oh brave zoeys Li!");
+            playerName = "zoeys li";
+        }
         player = new Player(playerName);
 
         createRooms();
@@ -144,7 +149,7 @@ public class Game {
 
         int choice = getPlayerChoice(options.size());
 
-        if (choice == 0 && options.getFirst().contains("Move")) {
+        if (choice == 0 && options.get(0).contains("Move")) {
             // Handle movement to another room
             moveToAnotherRoom();
         } else {

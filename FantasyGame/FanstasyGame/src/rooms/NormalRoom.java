@@ -6,8 +6,8 @@ import utilities.Entity;
 import java.util.ArrayList;
 
 public class NormalRoom extends Room {
-    private static final int MIN_GOLD = 5;
-    private static final int MAX_GOLD = 50;
+    private static final int MIN_GOLD = 2;
+    private static final int MAX_GOLD = 20;
     private Entity entity;
 
     public NormalRoom(String description) {
@@ -17,16 +17,17 @@ public class NormalRoom extends Room {
     }
 
     private void generateEntity() {
-        int chance = rng.nextInt(100);
-        if (chance < 10) {
-            entity = new Doctor();
-        } else if (chance < 20) {
-            entity = new Shaman();
-        } else if (chance < 30) {
-            entity = new Advisor();
-        } else {
-            entity = null;
-        }
+        entity = new Shaman();
+//        int chance = rng.nextInt(100);
+//        if (chance < 10) {
+//            entity = new Doctor();
+//        } else if (chance < 20) {
+//            entity = new Shaman();
+//        } else if (chance < 30) {
+//            entity = new Advisor();
+//        } else {
+//            entity = null;
+//        }
     }
 
     @Override
@@ -76,7 +77,7 @@ public class NormalRoom extends Room {
             case 2: // Search for treasures
                 int chance = rng.nextInt(100);
                 if (chance < 20) {
-                    int extraGold = rng.nextInt(5, 15);
+                    int extraGold = rng.nextInt(1, 10);
                     goldAmount += extraGold;
                     System.out.println("You found " + extraGold + " more gold hidden in the room!");
                 } else {

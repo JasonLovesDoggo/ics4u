@@ -10,7 +10,7 @@ public class RadioactiveRoom extends Room {
     public RadioactiveRoom(String description) {
         super(description);
         // Either 0 or a lot of gold
-        this.goldAmount = rng.nextBoolean() ? 0 : 60 + rng.nextInt(40);
+        this.goldAmount = rng.nextBoolean() ? 0 : 10 + rng.nextInt(25);
     }
 
     @Override

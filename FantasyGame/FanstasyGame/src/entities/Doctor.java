@@ -5,7 +5,7 @@ import utilities.Entity;
 import java.util.Scanner;
 
 public class Doctor implements Entity {
-    private static final int HEALING_COST = 60;
+    private static final int HEALING_COST = 40;
 
     @Override
     public void interact(Player player) {

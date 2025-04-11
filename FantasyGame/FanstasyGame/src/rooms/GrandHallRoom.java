@@ -18,8 +18,6 @@ public class GrandHallRoom extends NormalRoom {
 
     @Override
     public void handleOption(int option, Player player) {
-
-
         if (option < super.getOptions().size()) {
             super.handleOption(option, player);
             return;
@@ -29,7 +27,7 @@ public class GrandHallRoom extends NormalRoom {
         System.out.println("\n" + player.getName() + " decides to leave the castle with " + player.getGold() + " gold!");
         if (player.getGold() > 200) {
             System.out.println("What a successful adventure! You've gathered a fortune!");
-        } else if (player.getGold() > 100) {
+        } else if (player.getGold() >= 100) {
             System.out.println("A decent haul. Your elf friends will be impressed.");
         } else if (player.getGold() > 0) {
             System.out.println("Not much gold, but at least you survived.");
