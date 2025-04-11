@@ -65,6 +65,9 @@ public class Player {
     public void setCurrentRoom(Room room) {
         this.currentRoom = room;
         room.interact(this);
+		  for(Pet playerPet : playerPets) {
+		  		playerPet.interact(this);
+		  }
     }
 
     public boolean isCritical() {
