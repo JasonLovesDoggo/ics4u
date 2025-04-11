@@ -1,6 +1,8 @@
 package entities;
 
 import rooms.Room;
+import pets.*;
+import java.util.ArrayList;
 
 public class Player {
     private final String name;
@@ -9,12 +11,14 @@ public class Player {
     private int goldCapacity;
     private Room currentRoom;
     public static final int GLOBAL_MAX_GOLD_CAPACITY = 250;
+	 private ArrayList<Pet> playerPets;
 
     public Player(String name) {
         this.name = name;
         this.health = 100;
         this.gold = 0;
         this.goldCapacity = 100;
+		  this.playerPets = new ArrayList<>();
     }
 
     public String getName() {
@@ -70,4 +74,16 @@ public class Player {
     public boolean isAlive() {
         return health > 0;
     }
+	 
+	 public void addPet(Pet newPet) {
+	 		playerPets.add(newPet);
+	 }
+	 
+	 public int getNumPets() {
+	 		return playerPets.size();
+	 }
+	 
+	 public String getPets() {
+	 	return playerPets.toString();
+	 }
 }
