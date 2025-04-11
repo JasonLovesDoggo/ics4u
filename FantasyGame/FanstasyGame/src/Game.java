@@ -26,8 +26,8 @@ public class Game {
         String playerName = scanner.nextLine();
 
         if (playerName.isEmpty()) {
-            System.out.println("Welcome oh brave zoeys Li!");
-            playerName = "zoeys li";
+            System.out.println("Welcome oh brave Zoeiye\"s Li!");
+            playerName = "Zoeiye\"s li";
         }
         player = new Player(playerName);
 
