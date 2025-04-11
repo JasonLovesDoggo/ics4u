@@ -8,6 +8,7 @@ public class Player {
     private int gold;
     private int goldCapacity;
     private Room currentRoom;
+    public static final int GLOBAL_MAX_GOLD_CAPACITY = 250;
 
     public Player(String name) {
         this.name = name;
@@ -50,6 +51,7 @@ public class Player {
 
     public void increaseGoldCapacity(int amount) {
         this.goldCapacity += amount;
+        this.goldCapacity = Math.min(this.goldCapacity, GLOBAL_MAX_GOLD_CAPACITY);
     }
 
     public Room getCurrentRoom() {

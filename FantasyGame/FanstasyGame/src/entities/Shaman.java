@@ -10,11 +10,10 @@ public class Shaman implements Entity {
         Random rng = new Random();
         System.out.println("A mystical shaman offers to increase your gold carrying capacity.");
         System.out.println("The shaman performs a ritual...");
-        int GLOBAL_MAX_GOLD_CAPACITY = 250;
-        if (player.getGoldCapacity() >= GLOBAL_MAX_GOLD_CAPACITY) {
+        if (player.getGoldCapacity() >= Player.GLOBAL_MAX_GOLD_CAPACITY) {
             System.out.println("The shaman cries out, IT WONT WORK! You are already at maximum capacity!");
             return;
-        } else if (rng.nextInt(10) > 3) { // 70% chance to fail and do nothing
+        } else if (rng.nextInt(10) > 5) { // 50% chance to fail and do nothing
             System.out.println("The shaman's magic fails! You feel a strange sensation, but nothing happens.");
             return;
         } else if (rng.nextInt(50) >= 48 ) { // 4% chance to backfire
