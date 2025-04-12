@@ -39,7 +39,7 @@ public class RadioactiveRoom extends Room {
     public ArrayList<String> getOptions() {
         ArrayList<String> options = new ArrayList<>();
         options.add("Move to another room");
-        options.add("Take gold (causes up to 6% radiation damage per gold)");
+        options.add("Take gold one at a time(causes up to 6% radiation damage per gold)");
         options.add("Search for hazmat suit");
         return options;
     }
