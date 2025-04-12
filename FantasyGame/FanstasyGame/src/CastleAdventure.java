@@ -9,7 +9,6 @@ public class CastleAdventure {
         System.out.println("await those foolish enough to delve too deep.");
         System.out.println("Can you gather gold and escape with your life?");
         System.out.println("=======================================================");
-        // zoe look lol
         Game game = new Game();
         game.start();
     }
