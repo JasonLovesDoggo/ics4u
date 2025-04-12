@@ -59,18 +59,18 @@ public class Game {
             String roomName = roomNames[rng.nextInt(roomNames.length)];
             roomName += " " + (i + 1); // Add a number to make each name unique
 
-//            int roomType = RandomGenerator.nextInt(100);
+            int roomType = rng.nextInt(100);
             Room newRoom;
 
-//            if (roomType < 40) {
+            if (roomType < 40) {
                 newRoom = new NormalRoom(roomName);
-//            } else if (roomType < 60) {
-//                newRoom = new EmptyRoom(roomName);
-//            } else if (roomType < 80) {
-//                newRoom = new RadioactiveRoom(roomName);
-//            } else {
-//                newRoom = new DragonRoom(roomName);
-//            }
+            } else if (roomType < 60) {
+                newRoom = new EmptyRoom(roomName);
+            } else if (roomType < 90) {
+                newRoom = new RadioactiveRoom(roomName);
+            } else {
+                newRoom = new DragonRoom(roomName);
+            }
 
             rooms.add(newRoom);
         }
@@ -134,7 +134,7 @@ public class Game {
         System.out.println("\n==== Status ====");
         System.out.println("Name: " + player.getName());
         System.out.println("Health: " + player.getHealth() + "%");
-        System.out.println("Gold: " + player.getGold() + "/" + player.getGoldCapacity());
+        System.out.println("Gold: " + player.getGold() + "/" + player.getTotalCapacity());
         System.out.println("Current Location: " + player.getCurrentRoom().getDescription());
 		  if (player.getNumPets() > 0) {
 		  		System.out.println("Pets: " + player.getPets());
@@ -159,6 +159,10 @@ public class Game {
             // Handle other room-specific options
             currentRoom.handleOption(choice, player);
         }
+		  
+		  if (choice == 0 && options.get(0).contains("Leave")) {
+		  		moveToAnotherRoom();
+		  }
     }
 
     private int getPlayerChoice(int max) {
