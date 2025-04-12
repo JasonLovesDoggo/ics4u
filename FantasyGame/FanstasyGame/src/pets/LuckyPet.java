@@ -26,7 +26,7 @@ public class LuckyPet extends Pet {
 	}
 	
 	public String toString() {
-		return name + " (Lucky creature)";
+		return name + " (Lucky creature, Lvl " + level + ")";
 	}
 	
 }
