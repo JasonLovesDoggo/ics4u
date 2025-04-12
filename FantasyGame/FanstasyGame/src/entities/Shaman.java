@@ -2,7 +2,7 @@ package entities;
 
 import utilities.Entity;
 
-import java.util.Random;
+import java.util.*;
 
 public class Shaman implements Entity {
     @Override
@@ -10,7 +10,7 @@ public class Shaman implements Entity {
         Random rng = new Random();
         System.out.println("A mystical shaman offers to increase your gold carrying capacity.");
         System.out.println("The shaman performs a ritual...");
-        if (player.getGoldCapacity() >= Player.GLOBAL_MAX_GOLD_CAPACITY) {
+        if (player.getGoldCapacity() >= Player.GLOBAL_MAX_GOLD_CAPACITY+player.getPetCapacity()) {
             System.out.println("The shaman cries out, IT WONT WORK! You are already at maximum capacity!");
             return;
         } else if (rng.nextInt(10) > 5) { // 50% chance to fail and do nothing
@@ -26,6 +26,8 @@ public class Shaman implements Entity {
         }
         int increase = rng.nextInt(10, 30);
         player.increaseGoldCapacity(increase);
-        System.out.println("Your gold carrying capacity has been increased by " + increase + "!");
+        System.out.println("Your gold carrying capacity has been increased by " + increase + "!\n(Press enter to continue)\n . . .");
+		  Scanner s = new Scanner(System.in);
+		  s.nextLine();
     }
 }
