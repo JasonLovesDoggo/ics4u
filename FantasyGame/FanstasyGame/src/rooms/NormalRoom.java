@@ -117,7 +117,7 @@ public class NormalRoom extends Room {
         if (entity != null) {
             options.add("Talk to the " + entity.getClass().getSimpleName());
         }
-        options.add("Rest and recover (gain 1% health)");
+        options.add("Rest and recover (gain 3% health)");
         return options;
     }
 
@@ -146,8 +146,14 @@ public class NormalRoom extends Room {
 						  break; //Break inside the if statement so that if the entity is null, it drops down
                 }
             case 4: // Rest
-                player.setHealth(player.getHealth() + 5);
-                System.out.println("You rest for a while and recover 5% health.");
+                System.out.println("You sit down and rest for a while...");
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e); // You can't simply ignore this
+                }
+                player.setHealth(player.getHealth() + 3);
+                System.out.println("You wake up and have recovered 3% health.");
                 System.out.println("Your health is now " + player.getHealth() + "%");
                 break;
         }

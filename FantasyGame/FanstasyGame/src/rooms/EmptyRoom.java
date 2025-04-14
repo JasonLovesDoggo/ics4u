@@ -27,7 +27,7 @@ public class EmptyRoom extends Room {
         options.add("Move to another room");
         options.add("Inspect the walls");
         options.add("Look for hidden passages");
-        options.add("Rest and recover (gain 5% health)");
+        options.add("Rest and recover (gain 3% health)");
         return options;
     }
 

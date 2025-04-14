@@ -10,7 +10,7 @@ public class RadioactiveRoom extends Room {
     public RadioactiveRoom(String description) {
         super(description);
         // Either 0 or a lot of gold
-        this.goldAmount = rng.nextBoolean() ? 0 : 10 + rng.nextInt(25);
+        this.goldAmount = (rng.nextBoolean() ? 0 : 2 + rng.nextInt(5)) * 3; // ensure it's a multiple of 3
     }
 
     @Override
@@ -23,15 +23,16 @@ public class RadioactiveRoom extends Room {
 
     @Override
     public void takeGold(Player player) {
+        System.out.println(goldAmount);
         if (goldAmount > 0) {
-            int goldToTake = 1; // Take 1 gold at a time to control radiation exposure
+            int goldToTake = 3; // Take 4 gold at a time to control radiation exposure
             player.addGold(goldToTake);
             goldAmount -= goldToTake;
             player.reduceHealth(rng.nextInt(0,7)); // up to 6% health for each gold
-            System.out.println(player.getName() + " took 1 gold but was exposed to radiation!");
+            System.out.println(player.getName() + " took 4 gold but was exposed to radiation!");
             System.out.println(player.getName() + "'s health is now " + player.getHealth() + "%");
         } else {
-            System.out.println("There is no gold in this room.");
+            System.out.println("There is no gold in this room. The radiation must have scared it away.");
         }
     }
 
@@ -39,7 +40,7 @@ public class RadioactiveRoom extends Room {
     public ArrayList<String> getOptions() {
         ArrayList<String> options = new ArrayList<>();
         options.add("Move to another room");
-        options.add("Take gold one at a time(causes up to 6% radiation damage per gold)");
+        options.add("Take gold three at a time (causes up to 6% radiation damage per stack of gold)");
         options.add("Search for hazmat suit");
         return options;
     }

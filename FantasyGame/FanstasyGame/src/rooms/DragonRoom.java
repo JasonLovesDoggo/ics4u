@@ -95,8 +95,14 @@ public class DragonRoom extends Room {
 				}
 				break;
 			case 3: //Rest and recover
-				player.setHealth(player.getHealth() + 3);
-				System.out.println("You rest for a while and recover 3% health.");
+				System.out.println("You sit down and rest for a while...");
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e); // You can't simply ignore this
+                }
+                player.setHealth(player.getHealth() + 3);
+				System.out.println("You wake up and have recovered 3% health.");
 				System.out.println("Your health is now " + player.getHealth() + "%");
 				break;
 				
