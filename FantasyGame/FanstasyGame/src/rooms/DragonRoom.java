@@ -47,7 +47,7 @@ public class DragonRoom extends Room {
 					goldAmount -= goldToTake;
 					System.out.println(player.getName() + " took only what they can carry. You now have " + player.getGold() + " gold");
 				} else {
-					System.out.println(player.getName() + " can't carry any more gold!");
+					System.out.println(player.getName() + ". There is no more gold to take!");
 				}
 				break;
 			case 2: 

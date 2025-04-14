@@ -104,7 +104,7 @@ public class NormalRoom extends Room {
             goldAmount -= goldToTake;
             System.out.println(player.getName() + " took " + goldToTake + " gold.");
         } else {
-            System.out.println(player.getName() + " can't carry any more gold!");
+            System.out.println(player.getName() + " There is no more gold to take.");
         }
     }
 

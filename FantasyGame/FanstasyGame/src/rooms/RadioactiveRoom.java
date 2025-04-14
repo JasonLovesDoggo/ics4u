@@ -63,7 +63,7 @@ public class RadioactiveRoom extends Room {
                         goldAmount -= goldToTake;
                         System.out.println(player.getName() + " took " + goldToTake + " gold safely.");
                     } else {
-                        System.out.println("You can't carry any more gold!");
+                        System.out.println("All the gold is gone! The radiation must have scared it away.");
                     }
                 } else {
                     System.out.println("You search but find no protection against the radiation.");
