@@ -184,9 +184,9 @@ public class MiracleFruitTree {
         // Test 1: Initial state
         System.out.println("Test 1: Checking initial state");
         if (height == 1.0 && width == 0.5 && !isEnchanted) {
-            System.out.println("✓ Initial state test passed");
+            System.out.println("Initial state test passed");
         } else {
-            System.out.println("✗ Initial state test failed");
+            System.out.println("Initial state test failed");
             allTestsPassed = false;
         }
 
@@ -195,9 +195,9 @@ public class MiracleFruitTree {
         double initialHeight = height;
         grow();
         if (height > initialHeight) {
-            System.out.println("✓ Growth test passed");
+            System.out.println("Growth test passed");
         } else {
-            System.out.println("✗ Growth test failed");
+            System.out.println("Growth test failed");
             allTestsPassed = false;
         }
 
@@ -205,9 +205,9 @@ public class MiracleFruitTree {
         System.out.println("\nTest 3: Testing enchantment");
         enchant();
         if (isEnchanted && calculateGrowthBonus() == baseGrowthRate * 2) {
-            System.out.println("✓ Enchantment test passed");
+            System.out.println("Enchantment test passed");
         } else {
-            System.out.println("✗ Enchantment test failed");
+            System.out.println("Enchantment test failed");
             allTestsPassed = false;
         }
 
@@ -227,9 +227,9 @@ public class MiracleFruitTree {
         String initialStage = getLifeStage();
         while (height < 2.0) grow(); // Grow until no longer a sapling
         if (!getLifeStage().equals(initialStage)) {
-            System.out.println("✓ Life stage progression test passed");
+            System.out.println("Life stage progression test passed");
         } else {
-            System.out.println("✗ Life stage progression test failed");
+            System.out.println("Life stage progression test failed");
             allTestsPassed = false;
         }
 
@@ -237,15 +237,15 @@ public class MiracleFruitTree {
         System.out.println("\nTest 6: Testing shadow area calculation");
         double expectedArea = Math.PI * width * width;
         if (Math.abs(calculateShadowArea() - expectedArea) < 0.0001) {
-            System.out.println("✓ Shadow area calculation test passed");
+            System.out.println("Shadow area calculation test passed");
         } else {
-            System.out.println("✗ Shadow area calculation test failed");
+            System.out.println("Shadow area calculation test failed");
             allTestsPassed = false;
         }
 
         // Final results
         System.out.println("\nTest Results Summary:");
-        System.out.println(allTestsPassed ? "All tests passed! ✓" : "Some tests failed! ✗");
+        System.out.println(allTestsPassed ? "All tests passed!" : "Some tests failed!");
 
         return allTestsPassed;
     }
