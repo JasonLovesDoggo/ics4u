@@ -9,6 +9,7 @@ public class Player {
     private int health;
     private int gold;
     private int goldCapacity;
+	 private int mithril;
 	 private int petCapacity;
     private Room currentRoom;
     public static final int GLOBAL_MAX_GOLD_CAPACITY = 250;
@@ -18,6 +19,7 @@ public class Player {
         this.name = name;
         this.health = 100;
         this.gold = 0;
+		  this.mithril = 0;
         this.goldCapacity = 100;
 		  this.playerPets = new ArrayList<>();
     }
@@ -25,6 +27,18 @@ public class Player {
     public String getName() {
         return name;
     }
+	 
+	 public int getMithril() {
+	 	return mithril;
+	 }
+	 
+	 public void addMithril(int amount) {
+	 	mithril += amount;
+	 }
+	 
+	 public void removeMithril(int amount) {
+	 	mithril = Math.max(0, mithril-amount);
+	 }
 
     public int getHealth() {
         return health;
