@@ -2,6 +2,7 @@ package rooms;
 
 import entities.Player;
 import moria.Moria;
+
 import java.util.ArrayList;
 
 public class GrandHallRoom extends NormalRoom {
@@ -34,12 +35,12 @@ public class GrandHallRoom extends NormalRoom {
         } else {
             System.out.println("You leave empty-handed. Better luck next time!");
         }
-        
-		  if (player.getGold() < 100) {
-		  		System.exit(0);
-		  }
-		  //Moria start!
-		  Moria moria = new Moria(player);
-		  
+
+        if (player.getGold() < 100) {
+            System.exit(0);
+        }
+        //Moria start!
+        Moria moria = new Moria(player);
+
     }
 }

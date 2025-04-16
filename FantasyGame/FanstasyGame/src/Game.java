@@ -136,9 +136,9 @@ public class Game {
         System.out.println("Health: " + player.getHealth() + "%");
         System.out.println("Gold: " + player.getGold() + "/" + player.getTotalCapacity());
         System.out.println("Current Location: " + player.getCurrentRoom().getDescription());
-		  if (player.getNumPets() > 0) {
-		  		System.out.println("Pets: " + player.getPets());
-		  }
+        if (player.getNumPets() > 0) {
+            System.out.println("Pets: " + player.getPets());
+        }
     }
 
     private void handleRoomOptions() {
@@ -159,10 +159,10 @@ public class Game {
             // Handle other room-specific options
             currentRoom.handleOption(choice, player);
         }
-		  
-		  if (choice == 0 && options.get(0).contains("Leave")) {
-		  		moveToAnotherRoom();
-		  }
+
+        if (choice == 0 && options.get(0).contains("Leave")) {
+            moveToAnotherRoom();
+        }
     }
 
     private int getPlayerChoice(int max) {

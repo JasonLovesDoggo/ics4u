@@ -2,9 +2,9 @@ package rooms;
 
 import entities.Player;
 import utilities.Interactable;
+
 import java.util.ArrayList;
 import java.util.Random;
-
 
 
 public abstract class Room implements Interactable {

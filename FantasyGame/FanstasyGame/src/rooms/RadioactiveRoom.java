@@ -28,7 +28,7 @@ public class RadioactiveRoom extends Room {
             int goldToTake = 3; // Take 4 gold at a time to control radiation exposure
             player.addGold(goldToTake);
             goldAmount -= goldToTake;
-            player.reduceHealth(rng.nextInt(0,7)); // up to 6% health for each gold
+            player.reduceHealth(rng.nextInt(0, 7)); // up to 6% health for each gold
             System.out.println(player.getName() + " took 4 gold but was exposed to radiation!");
             System.out.println(player.getName() + "'s health is now " + player.getHealth() + "%");
         } else {

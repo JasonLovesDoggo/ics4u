@@ -3,6 +3,7 @@ package rooms;
 import entities.Player;
 
 import java.util.ArrayList;
+
 //todo: see if i can just remove this room
 public class EntryPointRoom extends Room {
     public EntryPointRoom(String description) {
