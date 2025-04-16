@@ -175,6 +175,7 @@ public class Game {
                 } else {
                     System.out.println("Please enter a number between 1 and " + max + ".");
                 }
+                System.out.println("\n\n");
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number.");
             }
