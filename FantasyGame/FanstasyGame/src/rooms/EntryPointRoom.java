@@ -3,6 +3,7 @@ package rooms;
 import entities.Player;
 
 import java.util.ArrayList;
+
 public class EntryPointRoom extends Room {
     public EntryPointRoom(String description) {
         super(description);
