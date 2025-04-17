@@ -15,10 +15,10 @@ public class LuckyPet extends Pet {
         Room room = player.getCurrentRoom();
         if (levelUp() && room instanceof NormalRoom) {
             if (rand.nextInt(10) % 2 == 0) { //Randomly select which chance to change
-                ((NormalRoom) room).changeShamanChance((int) level / 2);
+                ((NormalRoom) room).changeShamanChance(level / 2);
                 System.out.println("The chance of finding a shaman has been changed!");
             } else {
-                ((NormalRoom) room).changeDoctorChance((int) level / 2);
+                ((NormalRoom) room).changeDoctorChance(level / 2);
                 System.out.println("The chance of finding a doctor has been changed!");
             }
         }

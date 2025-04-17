@@ -6,12 +6,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-    private Player player;
-    private ArrayList<Room> rooms;
-    private Room entryPoint;
-    private Room grandHall;
     private final Scanner scanner;
     private final Random rng;
+    private Player player;
+    private final ArrayList<Room> rooms;
+    private Room entryPoint;
+    private Room grandHall;
 
     public Game() {
         scanner = new Scanner(System.in);
@@ -112,9 +112,7 @@ public class Game {
     }
 
     private void gameLoop() {
-        boolean running = true;
-
-        while (running) {
+        while (true) {
             if (!player.isAlive()) {
                 System.out.println("\nGame Over! " + player.getName() + " has died.");
                 break;

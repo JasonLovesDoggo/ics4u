@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class PackPet extends Pet {
 
-    private int capacity;
     private int counter;
 
     public PackPet(String name) {

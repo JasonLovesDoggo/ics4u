@@ -6,6 +6,7 @@ import rooms.Room;
 import java.util.ArrayList;
 
 public class Player {
+    public static final int GLOBAL_MAX_GOLD_CAPACITY = 250;
     private final String name;
     private int health;
     private int gold;
@@ -13,8 +14,7 @@ public class Player {
     private int mithril;
     private int petCapacity;
     private Room currentRoom;
-    public static final int GLOBAL_MAX_GOLD_CAPACITY = 250;
-    private ArrayList<Pet> playerPets;
+    private final ArrayList<Pet> playerPets;
 
     public Player(String name) {
         this.name = name;

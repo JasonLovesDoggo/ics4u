@@ -11,10 +11,6 @@ public class CollectorPet extends Pet {
         super(name);
     }
 
-    public void addGold(int amount) {
-        totalGold += amount;
-    }
-
     @Override
     public void interact(Player player) {
         Room room = player.getCurrentRoom();

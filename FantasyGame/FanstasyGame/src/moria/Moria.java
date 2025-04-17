@@ -16,7 +16,6 @@ public class Moria {
 
     - dwarves will come along and rob you
     */
-    private int roomNum;
     Random rand;
     Player player;
     Scanner s;
@@ -25,7 +24,6 @@ public class Moria {
         player = p;
         player.removeGold(100); //Pickaxe costs 100 gold
         player.reduceHealth(15); //15 health spent journeying to Moria
-        roomNum = 0;
         rand = new Random();
         s = new Scanner(System.in);
         initializeGame();
@@ -35,7 +33,7 @@ public class Moria {
         s.nextLine();
         System.out.println("Would you like to purchase a pickaxe that allows entrance into the dwarf-kingdom of Moria? (y/n)");
         String answer = s.nextLine();
-        if (answer.toLowerCase().equals("no") || answer.toLowerCase().equals("n")) {
+        if (answer.equalsIgnoreCase("no") || answer.equalsIgnoreCase("n")) {
             System.out.println("You decline the offer and head home. Safe choice!");
             System.exit(0);
         }
